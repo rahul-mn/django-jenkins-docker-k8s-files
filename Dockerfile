@@ -4,13 +4,13 @@ ENV PATH="/scripts:${PATH}"
 
 COPY ./requirements.txt /requirements.txt
 RUN apt update
-RUN apt install python3
+RUN apt install -y python3
 RUN python3 -m pip install --upgrade pip
 RUN pip install -r /requirements.txt
 
-RUN mkdir /my_django_project
-COPY ./my_django_project /my_django_project
-WORKDIR /my_django_project
+RUN mkdir /django_test
+COPY ./django_test /django_test
+WORKDIR /django_test
 COPY ./scripts /scripts
 
 RUN chmod +x /scripts/*
