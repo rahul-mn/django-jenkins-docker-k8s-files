@@ -16,9 +16,9 @@ RUN chmod +x /scripts/*
 
 RUN mkdir -p /vol/web/media
 RUN mkdir -p /vol/web/static
-RUN adduser -D user
+RUN adduser --disabled-password user
 RUN chown -R user:user /vol
 RUN chmod -R 755 /vol/web
-USER user
+RUN chown -R user:user /my_django_project
 
 CMD ["entrypoint.sh"]
