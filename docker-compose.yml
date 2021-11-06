@@ -7,7 +7,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./app:/app
-    command: sh -c "python manage.py runserver 0.0.0.0:8000"
+      - ./django-blog:/django-blog
+    command: sh -c "python3 manage.py runserver 0.0.0.0:8000"
     environment:
       - DEBUG=1

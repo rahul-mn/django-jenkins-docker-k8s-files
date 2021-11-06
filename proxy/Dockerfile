@@ -1,11 +1,24 @@
-FROM nginxinc/nginx-unprivileged:1-alpine
+FROM ubuntu
 
-COPY ./default.conf /etc/nginx/conf.d/default.conf
-COPY ./uwsgi_params /etc/nginx/uwsgi_params
+ENV PATH="/scripts:${PATH}"
 
-USER root
+COPY ./requirements.txt /requirements.txt
+RUN apt update
+RUN apt install -y python3 python3-pip
+RUN pip install -r /requirements.txt
 
-RUN mkdir -p /vol/static
-RUN chmod 755 /vol/static
+RUN mkdir /my_django_project
+COPY ./django-blog /my_django_project
+WORKDIR /my_django_project
+COPY ./scripts /scripts
 
-USER nginx
+RUN chmod +x /scripts/*
+
+RUN mkdir -p /vol/web/media
+RUN mkdir -p /vol/web/static
+RUN adduser --disabled-password user
+RUN chown -R user:user /vol
+RUN chmod -R 755 /vol/web
+RUN chown -R user:user /my_django_project
+
+CMD ["entrypoint.sh"]
