@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -t draxter67/django-project:1 .'
+        sh 'docker build -t draxter67/django-project:latest .'
       }
     }
     stage('Login') {
