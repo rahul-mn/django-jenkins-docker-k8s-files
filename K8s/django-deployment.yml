@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: django
-        image: draxter67/django-project
+        image: draxter67/django-project:latest
         command: ["/bin/sh"]
         args: ["-c", "python3 manage.py runserver 0.0.0.0:8000"]
         ports:

@@ -19,7 +19,7 @@ pipeline {
     }
     stage('Push') {
       steps {
-        sh 'docker push draxter67/django-project:latest'
+        sh 'docker push draxter67/django-project:1.1'
       }
     }
     stage('Deploy on K8s') {
