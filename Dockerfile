@@ -20,5 +20,3 @@ RUN adduser --disabled-password user
 RUN chown -R user:user /vol
 RUN chmod -R 755 /vol/web
 RUN chown -R user:user /django_test
-
-CMD ["entrypoint.sh"]
