@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-deployment
+  labels:
+    app: django
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: django
+  template:
+    metadata:
+      labels:
+        app: django
+    spec:
+      containers:
+      - name: django
+        image: draxter67/django-project
+        command: ["/bin/sh"]
+        args: ["-c", "python3 manage.py runserver 0.0.0.0:8000"]
+        ports:
+        - containerPort: 8000

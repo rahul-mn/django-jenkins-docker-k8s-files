@@ -21,6 +21,9 @@ pipeline {
       steps {
         sh 'docker push draxter67/django-project:latest'
       }
+    stage('Deploy on K8s') {
+      steps { 
+        sh 'kubectl apply -f k8s/.'
     }
   }
   post {
