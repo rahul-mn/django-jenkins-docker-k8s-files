@@ -10,9 +10,6 @@ RUN pip install -r /requirements.txt
 RUN mkdir /django_test
 COPY ./django_test /django_test
 WORKDIR /django_test
-COPY ./scripts /scripts
-
-RUN chmod +x /scripts/*
 
 RUN mkdir -p /vol/web/media
 RUN mkdir -p /vol/web/static
